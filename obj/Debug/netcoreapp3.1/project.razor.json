@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\tappelupelit\\FighterApp\\FighterApp.csproj",
+  "FilePath": "c:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\FighterApp.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14390,6 +14390,12 @@
     "CSharpLanguageVersion": 900
   },
   "RootNamespace": "FighterApp",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "c:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\Views\\MyController\\Index.cshtml",
+      "TargetPath": "Views\\MyController\\Index.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.2"
 }

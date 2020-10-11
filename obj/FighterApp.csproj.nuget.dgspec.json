@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\tappelupelit\\FighterApp\\FighterApp.csproj": {}
+    "C:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\FighterApp.csproj": {}
   },
   "projects": {
-    "C:\\tappelupelit\\FighterApp\\FighterApp.csproj": {
+    "C:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\FighterApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\tappelupelit\\FighterApp\\FighterApp.csproj",
+        "projectUniqueName": "C:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\FighterApp.csproj",
         "projectName": "FighterApp",
-        "projectPath": "C:\\tappelupelit\\FighterApp\\FighterApp.csproj",
-        "packagesPath": "C:\\Users\\uusi-\\.nuget\\packages\\",
-        "outputPath": "C:\\tappelupelit\\FighterApp\\obj\\",
+        "projectPath": "C:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\FighterApp.csproj",
+        "packagesPath": "C:\\Users\\Jonni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\uusi-\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jonni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,20 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Razor": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "MongoDB": {
+              "target": "Package",
+              "version": "[1.7.1.4791, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.11.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
