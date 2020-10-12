@@ -14392,8 +14392,13 @@
   "RootNamespace": "FighterApp",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\Views\\MyController\\Index.cshtml",
-      "TargetPath": "Views\\MyController\\Index.cshtml",
+      "FilePath": "c:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\Views\\My\\Index.cshtml",
+      "TargetPath": "Views\\My\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],

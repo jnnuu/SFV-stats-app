@@ -21,6 +21,7 @@ namespace FighterApp
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseUrls("http://localhost:5000", "http://192.168.100.16:5000");
+                    //webBuilder.UseWebRoot("public");
                     webBuilder.UseStartup<Startup>();
                 });
     }

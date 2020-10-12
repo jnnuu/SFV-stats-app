@@ -1,0 +1,11 @@
+.LeftSide
+{
+    width: 45vw;
+    background-color: blue;
+}
+.RightSide 
+{
+    position: 50vw;
+    width:45vw;
+    background-color: crimson;
+}

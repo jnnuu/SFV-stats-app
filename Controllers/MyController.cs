@@ -9,6 +9,8 @@ namespace FighterApp.Controllers
 {
     [ApiController]
     [Route("SFV")]
+    //Controller is responsible for request processing and returning proper response view.
+
     public class MyController : Controller
     {
         private readonly ILogger<WeatherForecastController> _logger;
@@ -55,7 +57,7 @@ namespace FighterApp.Controllers
         public async Task<IActionResult> Index()
         {
             ViewData["Message"] = "Your application description page.";
-            await _repository.StartGame(1, 2);
+            //await _repository.StartGame(1, 2);
             return View();
         }
 

@@ -37,6 +37,7 @@ namespace FighterApp
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
 
             app.UseRouting();
 
