@@ -1,6 +1,11 @@
+
+
 .LeftSide
 {
-    width: 45vw;
+    display:flex;
+    flex-wrap: wrap;
+    height:80vh;
+    width: 90vw;
     background-color: blue;
 }
 .RightSide 
@@ -8,4 +13,16 @@
     position: 50vw;
     width:45vw;
     background-color: crimson;
+}
+button{
+    height:100px;
+    width:100px;
+    background-color:#004040;
+    font-size:xx-large;
+    color:rgb(141, 128, 128);
+}
+button:active
+{
+    background-color: #82f491;
+    color: black;
 }

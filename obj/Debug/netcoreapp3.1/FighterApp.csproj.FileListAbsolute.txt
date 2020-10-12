@@ -69,3 +69,4 @@ C:\Users\Jonni\source\repos\SFV-stats-app-master\FighterApp\obj\Debug\netcoreapp
 C:\Users\Jonni\source\repos\SFV-stats-app-master\FighterApp\obj\Debug\netcoreapp3.1\FighterApp.Views.pdb
 C:\Users\Jonni\source\repos\SFV-stats-app-master\FighterApp\obj\Debug\netcoreapp3.1\Razor\Views\My\Index.cshtml.g.cs
 C:\Users\Jonni\source\repos\SFV-stats-app-master\FighterApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Jonni\source\repos\SFV-stats-app-master\FighterApp\obj\Debug\netcoreapp3.1\Razor\Views\My\GamePage.cshtml.g.cs

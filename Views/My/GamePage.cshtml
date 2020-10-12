@@ -1,0 +1,66 @@
+@using System;
+
+
+@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+    <link rel="stylesheet" href="~/css/gamepage.css"/>
+}
+@functions{
+    //set up correct id's for the playerBox divs.
+    public string getFighterId(string dataKey)
+    {
+        string name = ViewData[dataKey] as string;
+        int i = 0;
+        foreach (var en in Enum.GetNames(typeof(Fighter_id)))
+        {
+            string HeroName = "";
+            for (int j = 0; j < en.Length; j++)
+            {
+                HeroName += en[j];
+            }
+            if (name == HeroName)
+            {
+                break;
+            }
+            i++;
+        }
+        return i.ToString();
+    }
+}
+
+<div class="container">
+    <div id="@getFighterId("PlayerOne")" class="playerBox1">
+        <a href="http://192.168.100.16:5000/sfv">
+        <button onclick="InputWinner(@getFighterId("PlayerOne"), @getFighterId("PlayerTwo"))">@ViewData["PlayerOne"]</button>
+        </a> 
+    </div>
+    VS 
+    <div id="@getFighterId("PlayerTwo")" class="playerBox2">
+        <a href="http://192.168.100.16:5000/sfv">
+        <button onclick="InputWinner(@getFighterId("PlayerTwo"), @getFighterId("PlayerOne"))">@ViewData["PlayerTwo"]</button>
+        </a> 
+    </div>
+</div>
+
+<script>
+    function InputWinner(id1, id2) //winner, loser id
+    {
+        var winUrl = "http://192.168.100.16:5000/sfv/winner/";
+        var loseUrl = "http://192.168.100.16:5000/sfv/loser/";
+        winUrl += id1;
+        loseUrl += id2;
+        console.log("Winner url: " + winUrl);
+        console.log("Loser url: " + loseUrl);
+        $.ajax(winUrl, {
+            type: 'POST',
+        })
+        $.ajax(loseUrl, {
+            type: 'POST',
+        })
+    }
+
+</script>

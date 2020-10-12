@@ -14397,6 +14397,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\Views\\My\\GamePage.cshtml",
+      "TargetPath": "Views\\My\\GamePage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Jonni\\source\\repos\\SFV-stats-app-master\\FighterApp\\Views\\My\\Index.cshtml",
       "TargetPath": "Views\\My\\Index.cshtml",
       "FileKind": "mvc"

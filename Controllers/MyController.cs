@@ -60,6 +60,16 @@ namespace FighterApp.Controllers
             //await _repository.StartGame(1, 2);
             return View();
         }
+        [HttpGet]
+        [Route("Game/{id1}/{id2}")]
+        public async Task<IActionResult> GamePage(int id1, int id2)
+        {
+            ViewData["PlayerOne"] = Enum.GetName(typeof(Fighter_id), id1);
+            ViewData["PlayerTwo"] = Enum.GetName(typeof(Fighter_id), id2);
+            //var c = (int)Fighter_id.Cammy;
+
+            return View();
+        }
 
 
     }
