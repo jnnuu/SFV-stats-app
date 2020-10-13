@@ -1,22 +1,25 @@
-
+.MainContainer
+{
+    display:flex;
+}
 
 .LeftSide
 {
     display:flex;
+    width:45vw;
     flex-wrap: wrap;
-    height:80vh;
-    width: 90vw;
     background-color: blue;
 }
 .RightSide 
 {
-    position: 50vw;
-    width:45vw;
+    display:flexbox;
+    width:35vw;
     background-color: crimson;
 }
 button{
+    display:block;
     height:100px;
-    width:100px;
+    width:139px;
     background-color:#004040;
     font-size:xx-large;
     color:rgb(141, 128, 128);
@@ -25,4 +28,22 @@ button:active
 {
     background-color: #82f491;
     color: black;
+}
+button.PostButton{
+    display:block;
+    height:100%;
+    width:145px;
+    background-color:#004040;
+    font-size:xx-large;
+    color:rgb(141, 128, 128);
+}
+.p1{
+    font-size: xx-large;
+    color:white;
+    outline: blue;
+}
+.p2{
+    font-size: xx-large;
+    color:white;
+    outline:green;
 }

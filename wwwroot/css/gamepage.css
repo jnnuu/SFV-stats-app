@@ -1,3 +1,8 @@
 .container {
     display:flex;
 }
+button{
+    font-size: xx-large;
+    width:300px;
+    height: 300px;
+}
