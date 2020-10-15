@@ -14,6 +14,7 @@
     <link media="only screen and (max-device-width: 480px)" href="small-device.css" type= "text/css" rel="stylesheet">
 
 }
+
 @functions{
     public string getFighterAvatar(string _name)
     {
@@ -21,6 +22,7 @@
         return imageUrl;
     }
 }
+
 <img src="img/backround.png" alt="">
 <div class="MainContainer">
 <div class="LeftSide">
@@ -38,7 +40,7 @@
         <div class="p2"></div>
     </div>
 </div>
-<a class="ProceedLink" href="sFv/Game/_1/_2"><button class="PostButton" onClick="PostGame()">FIGHT</button></a>
+<a class="ProceedLink" href="/sfV/Game/_1/_2"><button class="PostButton" onClick="PostGame()">FIGHT</button></a>
 
 <script>
     var i = 0;
@@ -100,3 +102,4 @@
         return $("#"+id).text();
     }
 </script>
+

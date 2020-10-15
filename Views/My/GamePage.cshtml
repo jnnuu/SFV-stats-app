@@ -32,7 +32,7 @@
             }
             if (name == HeroName)
             {
-                continue;
+                break;
             }
             i++;
         }
@@ -98,15 +98,15 @@
 <div class="container">
     <div id="@getFighterId("PlayerOne")" class="playerBox1">
         <div class="stats p1">WIN percentage: @GetWinPercentageP1()</div>
+        <button onClick="InputWinner( @getFighterId("PlayerOne") , @getFighterId("PlayerTwo"))">
         <a href="/sfv">
-        <button onclick="InputWinner( @getFighterId("PlayerOne") , @getFighterId("PlayerTwo"))">
         <img src="@ViewData["PlayerOneAvatar"]">
         </button>
         </a> 
     </div>
     <div id="@getFighterId("PlayerTwo")" class="playerBox2">
+        <button onClick="InputWinner(@getFighterId("PlayerTwo"), @getFighterId("PlayerOne"))">
         <a href="/sfv">
-        <button onclick="InputWinner(@getFighterId("PlayerTwo"), @getFighterId("PlayerOne"))">
             <img src="@ViewData["PlayerTwoAvatar"]">
         </button>
         </a> 
@@ -121,17 +121,17 @@
 <script type="text/javascript">
     function InputWinner(id1, id2)
     {
-        var winUrl = "http://192.168.100.12:5000/sfv/winner/";
-        var loseUrl = "http://192.168.100.12:5000/sfv/loser/";
+        var winUrl = "http://192.168.100.19:5000/sfv/winner/";
+        var loseUrl = "http://192.168.100.19:5000/sfv/loser/";
         winUrl += id1;
         loseUrl += id2;
         console.log("Winner url: " + winUrl);
         console.log("Loser url: " + loseUrl);
         $.ajax(winUrl, {
-            type: 'POST',
+            type: "POST",
         });
         $.ajax(loseUrl, {
-            type: 'POST',
+            type: "POST",
         });
     }
 </script>
