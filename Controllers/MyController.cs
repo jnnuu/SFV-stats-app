@@ -67,7 +67,7 @@ namespace FighterApp.Controllers
         {
             return await _repository.ResetallCharacterData();
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewData["Message"] = "Your application description page.";
             //await _repository.StartGame(1, 2);
