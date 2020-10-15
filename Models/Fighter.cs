@@ -18,4 +18,5 @@ public class Fighter
     public int timesWon { get; set; }
     public int timesLost { get; set; }
 
+
 }

@@ -8,6 +8,10 @@
 {
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
     <link rel="stylesheet" href="~/css/gamepage.css"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/img/touch_icon.png">
+    <link media="only screen and (max-device-width: 480px)" href="small-device.css" type= "text/css" rel="stylesheet">
 }
 @functions{
     //set up correct id's for the playerBox divs.
@@ -28,33 +32,90 @@
             }
             i++;
         }
-        return i.ToString();
+        return i.ToString(); //return enum as string (1,2,3,4...)
     }
-}
+     public string GetWinPercentageP2()
+     {
+        int played = (int)ViewData["id2_played"];
+        int won = (int)ViewData["id2_won"];
+        System.Console.WriteLine($"p2:w:{won}/p:{played}");
+        if (won == 0 || played == 0)
+            return 0.ToString("P0");
 
+        float percentage = (float)won/played;
+        string returnString = percentage.ToString("P0");
+        return returnString;
+     }
+     public string GetWinPercentageP1()
+     {
+        int played = (int)ViewData["id1_played"];
+        int won = (int)ViewData["id1_won"];
+        System.Console.WriteLine($"p1:w:{won}/p:{played}");
+        if (won == 0 || played == 0)
+            return 0.ToString("P0");
+
+        float percentage = (float)won/played;
+        string returnString = percentage.ToString("P0");
+        return returnString;
+     }
+    public string TopThreePlayed()
+    {
+        Fighter[] fighters = ViewData["TopThreePlayed"] as Fighter[];
+        string retstring = "";
+        for (int i = 0 ; i<fighters.Length; i++)
+        {
+            retstring += $"{i+1}. {fighters[i].name} ({fighters[i].timesPlayed}) \n";
+        }
+        return retstring;
+    }
+    public string TopThreeWins()
+    {
+        Fighter[] fighters = ViewData["TopThreeWins"] as Fighter[];
+        string retstring = "";
+        for (int i = 0; i<fighters.Length;i++)
+        {
+            //calculate win percentage first
+            float winPerc = fighters[i].timesWon / fighters[i].timesPlayed;
+            retstring += $"{i+1}. {fighters[i].name} ({winPerc.ToString("P0")}) \n";
+            
+        }
+        return retstring;
+    }
+
+
+}
 <div class="container">
     <div id="@getFighterId("PlayerOne")" class="playerBox1">
-        <a href="http://192.168.100.16:5000/sfv">
-        <button onclick="InputWinner(@getFighterId("PlayerOne"), @getFighterId("PlayerTwo"))">@ViewData["PlayerOne"]</button>
+        <div class="stats p1">WIN percentage: @GetWinPercentageP1()</div>
+        <a href="/sfv">
+        <button onclick="InputWinner(@getFighterId("PlayerOne"), @getFighterId("PlayerTwo"))">
+        <img src="@ViewData["PlayerOneAvatar"]">
+        </button>
         </a> 
     </div>
-    VS 
     <div id="@getFighterId("PlayerTwo")" class="playerBox2">
-        <a href="http://192.168.100.16:5000/sfv">
-        <button onclick="InputWinner(@getFighterId("PlayerTwo"), @getFighterId("PlayerOne"))">@ViewData["PlayerTwo"]</button>
+        <a href="/sfv">
+        <button onclick="InputWinner(@getFighterId("PlayerTwo"), @getFighterId("PlayerOne"))">
+            <img src="@ViewData["PlayerTwoAvatar"]">
+        </button>
         </a> 
+        <div class="stats p2">WIN percentage: @GetWinPercentageP2()</div>
     </div>
 </div>
-
+<div class="GeneralStats">
+    <div class="top3winrate">@TopThreePlayed()</div>
+    <div class="top3played">@TopThreeWins()</div>
+</div>
 <script>
     function InputWinner(id1, id2) //winner, loser id
     {
-        var winUrl = "http://192.168.100.16:5000/sfv/winner/";
-        var loseUrl = "http://192.168.100.16:5000/sfv/loser/";
+        var winUrl = "http://192.168.100.19:5000/sfv/winner/";
+        var loseUrl = "http://192.168.100.19:5000/sfv/loser/";
         winUrl += id1;
         loseUrl += id2;
         console.log("Winner url: " + winUrl);
         console.log("Loser url: " + loseUrl);
+        @{System.Console.WriteLine("posted!");}
         $.ajax(winUrl, {
             type: 'POST',
         })
@@ -62,5 +123,5 @@
             type: 'POST',
         })
     }
-
 </script>
+

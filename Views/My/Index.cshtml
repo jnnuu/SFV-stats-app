@@ -1,4 +1,5 @@
 @using FighterApp.Controllers;
+@using System;
 @{
     Layout = "_Layout";
 }
@@ -7,50 +8,76 @@
 {
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
     <link rel="stylesheet" href="~/css/index.css"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/img/touch_icon.png">
+    <link media="only screen and (max-device-width: 480px)" href="small-device.css" type= "text/css" rel="stylesheet">
+
 }
+@functions{
+    public string getFighterAvatar(string _name)
+    {
+        string imageUrl = $"/img/characters/{_name}.png";
+        return imageUrl;
+    }
+}
+<img src="img/backround.png" alt="">
 <div class="MainContainer">
 <div class="LeftSide">
 @for (var i =0;i<40;i++)
 {
-    <button id="@Convert.ToInt32((Fighter_id)i)" onClick="AddHeroToGame(this.id)">@Enum.GetName(typeof(Fighter_id),i)</button>
+    <button id="@Convert.ToInt32((Fighter_id)i)" onClick="AddHeroToGame(this.id)"><img src="@getFighterAvatar(Enum.GetName(typeof(Fighter_id),i))">@Enum.GetName(typeof(Fighter_id),i)</button>
+
+
+    @* <button id="@Convert.ToInt32((Fighter_id)i)" onClick="AddHeroToGame(this.id)">@Enum.GetName(typeof(Fighter_id),i)</button> *@
 }
 </div>
     <div class="RightSide">
         <div class="p1"></div>
-                VS 
+    VS
         <div class="p2"></div>
     </div>
-<a class="ProceedLink" href="SFV/Game/_1/_2"><button class="PostButton" onClick="PostGame()">FIGHT</button></a>
 </div>
+<a class="ProceedLink" href="sFv/Game/_1/_2"><button class="PostButton" onClick="PostGame()">FIGHT</button></a>
 
 <script>
     var i = 0;
-    var ids = [];
+    var ids = [-1,-1];
+
     function AddHeroToGame(fighter_Id)
     {
+        if (ids.find(element => element == -1)) {
+        }
         var wasNew = true;   
-        if (ids.find(element => element == fighter_Id)) {
+        if (ids.find(element => element == fighter_Id)) { 
+            $("#"+fighter_Id).toggleClass("clicked");
             $(".p"+(ids.indexOf(fighter_Id)+1)).text("");
-            ids.pop(fighter_Id);
+            ids[ids.indexOf(fighter_Id)] = -1;
             console.log("already exists! removed:" + GetFighterName(fighter_Id));
             ResetButtonHref(".ProceedLink");
             wasNew = false;
             }
-        if (ids.length <2 && wasNew == true) {
-            ids.push(fighter_Id);
-            $(".p"+ids.length).append(GetFighterName(fighter_Id));
-            console.log();
+        if (ids[0] == -1 && wasNew == true) {
+            ids[0] = fighter_Id;
+            $("#"+fighter_Id).toggleClass("clicked");
+            $(".p1").append(GetFighterName(fighter_Id));
+
+            }
+        else if (ids[0] != -1 && ids[1] == -1 && wasNew == true) {
+            ids[1] = fighter_Id;
+            $("#"+fighter_Id).toggleClass("clicked");
+            $(".p2").append(GetFighterName(fighter_Id));
             }
 
-        console.log(ids.length);        
-        if (ids.length == 2)
+        console.log(ids.length + ":" + ids[0] + "+" + ids[1]);        
+        if (ids[0] != -1 && ids[1] != -1)
         {
             ReplaceButtonHref(".ProceedLink");
         }
     }
     function ResetButtonHref(button_class)
     {
-        var newHref = "http://192.168.100.16:5000/SFV/Game/_1/_2";
+        var newHref = "sfV/Game/_1/_2";
         $(button_class).prop("href", newHref);
     }
 
@@ -59,12 +86,11 @@
         var href = $(button_class).prop("href");
         var newHref = href
         newHref = href.replace("_1", ids[0]).replace("_2", ids[1]);
-        console.log("logging from replacebuttonhref: " + newHref);
         $(button_class).prop("href", newHref);
     }
     function PostGame()
     {
-        var url = "http://192.168.100.16:5000/SFV/start/_1/_2";
+        var url = "/start/_1/_2";
         console.log("staring game with ids: " + ids[0] + "and"+ ids[1]);
         $.ajax(url.replace("_1", ids[0]).replace("_2", ids[1]), {type: 'POST'} ).done(function() {console.log("i did it:" + ids[0] + " " + ids[1]);});
         ids = [];

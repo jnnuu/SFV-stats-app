@@ -1,48 +1,87 @@
+html { -webkit-text-size-adjust: none; background-color: rgb(48, 48, 48); }
+
 .MainContainer
 {
     display:flex;
+    overflow: hidden;
+    height:98vh;
+    width:98vw;
 }
-
+a{
+    text-decoration: none;
+}
+img{
+    left:0;
+}
+.InvisibleText
+{
+    color:(rgba(0,0,0,1));
+}
 .LeftSide
 {
     display:flex;
-    width:45vw;
+    width:194px;
     flex-wrap: wrap;
-    background-color: blue;
+    justify-items: left;
+    left:0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgb(59, 59, 230);
 }
 .RightSide 
 {
-    display:flexbox;
-    width:35vw;
-    background-color: crimson;
+    padding-top: 25vh;
+    display:block;
+    flex-wrap: wrap;
+    text-align: center;
+    right:0;
+    width:50%;
+    height:50%;
+    background-color:inherit;
 }
 button{
+    padding: 0px;
+    margin: 0;
     display:block;
-    height:100px;
-    width:139px;
-    background-color:#004040;
-    font-size:xx-large;
-    color:rgb(141, 128, 128);
+    height:182px;
+    background-color:#4e2edb;
+    font-size:large;
+    color:rgb(49, 43, 43);
 }
 button:active
 {
     background-color: #82f491;
     color: black;
 }
-button.PostButton{
+.clicked
+{
+    background-color:#000000;
+}
+.PostButton{
     display:block;
-    height:100%;
-    width:145px;
-    background-color:#004040;
-    font-size:xx-large;
+    padding:0;
+    margin:0;
+    text-orientation: upright;
+    writing-mode: vertical-rl;
+    text-align: center;
+    height:50%;
+    position: absolute;
+    right:0;
+    bottom:0;
+    margin-top: 100%;
+    width:47vw;
+    background-color:#ad2121;
+    font-size:55;
     color:rgb(141, 128, 128);
 }
 .p1{
+    width: 100%;
     font-size: xx-large;
     color:white;
     outline: blue;
 }
 .p2{
+    width: 100%;
     font-size: xx-large;
     color:white;
     outline:green;

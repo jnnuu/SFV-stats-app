@@ -11,6 +11,7 @@ public interface IRepository
     Task<int> GetTimesPlayed(int fighterId);
     Task<int> GetTimesLost(int fighterId);
     Task<int> GetTimesWon(int fighterId);
-
+    Task<Fighter[]> TopWinners();
+    Task<Fighter[]> TopPlayed();
 
 }

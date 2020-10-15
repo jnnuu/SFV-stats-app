@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
+using System.Linq;
 
 
 public class MongoDbRepository : IRepository
@@ -73,7 +75,7 @@ public class MongoDbRepository : IRepository
         player1.timesPlayed = await GetTimesPlayed(fighterId1);
         player1.timesLost = await GetTimesLost(fighterId1);
         player1.timesWon = await GetTimesWon(fighterId1);
-        await InputFighterToDb(fighterId1);
+        // await InputFighterToDb(fighterId1);
 
 
         Fighter player2 = new Fighter();
@@ -82,7 +84,7 @@ public class MongoDbRepository : IRepository
         player2.timesPlayed = await GetTimesPlayed(fighterId2);
         player2.timesLost = await GetTimesLost(fighterId2);
         player2.timesWon = await GetTimesWon(fighterId2);
-        await InputFighterToDb(fighterId2);
+        // await InputFighterToDb(fighterId2);
 
         Game newGame = new Game(player1, player2);
         await _gamesCollection.InsertOneAsync(newGame);
@@ -93,6 +95,7 @@ public class MongoDbRepository : IRepository
     {
         var player_filter = Builders<Fighter>.Filter.Eq(f => f.fighterId, fighterId);
         var foundFighter = await _fighterCollection.Find(player_filter).FirstAsync();
+        foundFighter.timesPlayed += 1;
         foundFighter.timesWon += 1;
         await _fighterCollection.ReplaceOneAsync(player_filter, foundFighter);
         return foundFighter;
@@ -101,6 +104,7 @@ public class MongoDbRepository : IRepository
     {
         var player_filter = Builders<Fighter>.Filter.Eq(f => f.fighterId, fighterId);
         var foundFighter = await _fighterCollection.Find(player_filter).FirstAsync();
+        foundFighter.timesPlayed += 1;
         foundFighter.timesLost += 1;
         await _fighterCollection.ReplaceOneAsync(player_filter, foundFighter);
         return foundFighter;
@@ -113,5 +117,41 @@ public class MongoDbRepository : IRepository
         await database.DropCollectionAsync("fighters");
         AddAllCharactersToDatabase();
         return "All characters reset";
+    }
+
+    public async Task<Fighter[]> TopWinners()
+    {
+        var filter = Builders<Fighter>.Filter.Empty;
+        List<Fighter> allFighters = await _fighterCollection.Find(filter).ToListAsync();
+        List<Fighter> removedFighters = new List<Fighter>();
+        foreach (var fighter in allFighters)
+        {
+            if (fighter.timesPlayed == 0 || fighter.timesWon == 0 || fighter.timesPlayed == 0)
+            {
+                removedFighters.Add(fighter);
+            }
+        }
+
+        for (int i = 0; i < removedFighters.Count; i++)
+        {
+            allFighters.Remove(removedFighters[i]);
+        }
+        List<Fighter> sortedFighters = allFighters.OrderByDescending(f => f.timesWon / f.timesPlayed).ToList();
+        Fighter[] topThree = new Fighter[3];
+        topThree[0] = sortedFighters[0];
+        topThree[1] = sortedFighters[1];
+        topThree[2] = sortedFighters[2];
+        return topThree;
+    }
+    public async Task<Fighter[]> TopPlayed()
+    {
+        var filter = Builders<Fighter>.Filter.Empty;
+        List<Fighter> allFighters = await _fighterCollection.Find(filter).ToListAsync();
+        List<Fighter> sortedFighters = allFighters.OrderByDescending(f => f.timesPlayed).ToList();
+        Fighter[] topThree = new Fighter[3];
+        topThree[0] = sortedFighters[0];
+        topThree[1] = sortedFighters[1];
+        topThree[2] = sortedFighters[2];
+        return topThree;
     }
 }

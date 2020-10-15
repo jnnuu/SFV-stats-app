@@ -22,6 +22,19 @@ namespace FighterApp.Controllers
             _repository = repo;
         }
 
+        [HttpGet]
+        [Route("TopThree")]
+        public async Task<Fighter[]> GetTopThree()
+        {
+            return await _repository.TopWinners();
+        }
+        [HttpGet]
+        [Route("TopThreePlayed")]
+        public async Task<Fighter[]> GetTopThreePlayed()
+        {
+            return await _repository.TopPlayed();
+        }
+
         [HttpPost]
         [Route("Start/{id1}/{id2}")]
         public async Task<Game> StartGameAsync(int id1, int id2)
@@ -54,7 +67,7 @@ namespace FighterApp.Controllers
         {
             return await _repository.ResetallCharacterData();
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             ViewData["Message"] = "Your application description page.";
             //await _repository.StartGame(1, 2);
@@ -65,12 +78,23 @@ namespace FighterApp.Controllers
         public async Task<IActionResult> GamePage(int id1, int id2)
         {
             ViewData["PlayerOne"] = Enum.GetName(typeof(Fighter_id), id1);
+            ViewData["PlayerOneAvatar"] = $"/img/characters/{Enum.GetName(typeof(Fighter_id), id1)}.png";
             ViewData["PlayerTwo"] = Enum.GetName(typeof(Fighter_id), id2);
-            //var c = (int)Fighter_id.Cammy;
+            ViewData["PlayerTwoAvatar"] = $"/img/characters/{Enum.GetName(typeof(Fighter_id), id2)}.png";
+
+            ViewData["TopThreePlayed"] = await _repository.TopPlayed();
+            ViewData["TopThreeWins"] = await _repository.TopWinners();
+
+
+            ViewData["id1_played"] = await _repository.GetTimesPlayed(id1);
+            ViewData["id1_won"] = await _repository.GetTimesWon(id1);
+            ViewData["id1_lost"] = await _repository.GetTimesLost(id1);
+
+            ViewData["id2_played"] = await _repository.GetTimesPlayed(id2);
+            ViewData["id2_won"] = await _repository.GetTimesWon(id2);
+            ViewData["id2_lost"] = await _repository.GetTimesLost(id2);
 
             return View();
         }
-
-
     }
 }
