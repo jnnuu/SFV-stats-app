@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 public interface IRepository
@@ -11,7 +12,12 @@ public interface IRepository
     Task<int> GetTimesPlayed(int fighterId);
     Task<int> GetTimesLost(int fighterId);
     Task<int> GetTimesWon(int fighterId);
+    Task<string[]> GetWinPercentage();
     Task<Fighter[]> TopWinners();
     Task<Fighter[]> TopPlayed();
+    Task<List<Game>> GetSeasonScoreboard();
+    Task<Fighter[]> GetStats();
+
+
 
 }

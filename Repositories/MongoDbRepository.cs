@@ -13,6 +13,7 @@ public class MongoDbRepository : IRepository
 
     private readonly IMongoCollection<Game> _gamesCollection;
     private readonly IMongoCollection<Fighter> _fighterCollection;
+    private readonly IMongoCollection<Game> _seasonCollection;
     private readonly IMongoCollection<BsonDocument> _bsonDocumentCollection;
     public MongoDbRepository()
     {
@@ -20,6 +21,7 @@ public class MongoDbRepository : IRepository
         var database = mongoClient.GetDatabase("StreetFighterStats");
         _gamesCollection = database.GetCollection<Game>("games");
         _fighterCollection = database.GetCollection<Fighter>("fighters");
+        _seasonCollection = database.GetCollection<Game>("seasongames");
         _bsonDocumentCollection = database.GetCollection<BsonDocument>("fighters");
     }
 
@@ -153,5 +155,75 @@ public class MongoDbRepository : IRepository
         topThree[1] = sortedFighters[1];
         topThree[2] = sortedFighters[2];
         return topThree;
+    }
+    public async Task<List<Game>> GetSeasonScoreboard()
+    {
+        var games = new List<Game>();
+        for (int i = 0; i < 40; i++)
+        {
+            for (int j = 0; j < 40; j++)
+            {
+                if (i == j)
+                    continue;
+
+                var filter1 = Builders<Game>.Filter.Where(g => g.player_1.fighterId == j);
+                var listOfPlayerIGames = _seasonCollection.Find(filter1).ToList();
+                if (listOfPlayerIGames.Count > 0)
+                {
+                    continue;
+                }
+
+                Fighter playerOne = new Fighter();
+                playerOne.name = Enum.GetName(typeof(Fighter_id), i);
+                playerOne.fighterId = i;
+                playerOne.timesLost = 0;
+                playerOne.timesPlayed = 0;
+                playerOne.timesWon = 0;
+
+                Fighter playerTwo = new Fighter();
+                playerTwo.name = Enum.GetName(typeof(Fighter_id), j);
+                playerTwo.fighterId = j;
+                playerTwo.timesLost = 0;
+                playerTwo.timesPlayed = 0;
+                playerTwo.timesWon = 0;
+                Game seasonGame = new Game(playerOne, playerTwo);
+                seasonGame.winner = null;
+                games.Add(seasonGame);
+                await _seasonCollection.InsertOneAsync(seasonGame);
+                continue;
+
+            }
+        }
+        return games;
+    }
+
+    public async Task<Fighter[]> GetStats()
+    {
+        Fighter[] fighters = new Fighter[40];
+        var filter = Builders<Fighter>.Filter.Empty;
+        List<Fighter> list = await _fighterCollection.Find(filter).ToListAsync();
+        for (int i = 0; i < fighters.Length; i++)
+        {
+            fighters[i] = list[i];
+        }
+        return fighters;
+    }
+
+    public async Task<string[]> GetWinPercentage()
+    {
+        string[] retArr = new string[40];
+        for (int i = 0; i < 40; i++)
+        {
+            int timesPlayed = await GetTimesPlayed(i);
+            int timesWon = await GetTimesWon(i);
+
+            float winPercentage = 0;
+            if (timesPlayed != 0 && timesWon != 0)
+            {
+                winPercentage = (float)timesWon / (float)timesPlayed;
+            }
+            retArr[i] = winPercentage.ToString("P0");
+        }
+        return retArr;
     }
 }

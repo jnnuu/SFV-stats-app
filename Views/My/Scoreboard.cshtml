@@ -1,0 +1,74 @@
+@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+    <link rel="stylesheet" href="~/css/scoreboard.css"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/img/touch_icon.png">
+    <link media="only screen and (max-device-width: 480px)" href="small-device.css" type= "text/css" rel="stylesheet">
+}
+
+@functions{
+    public string GetScoreBoard()
+    {
+        Fighter[] fighters = ViewData["scoreboard"] as Fighter[];
+        string retString = "";
+        for (int i = 0; i < fighters.Length; i++)
+        {
+            string winpercentage = 0.ToString("P0");
+            if (fighters[i].timesWon != 0 && fighters[i].timesPlayed != 0)
+            {
+                float winperc = (float)fighters[i].timesWon / (float)fighters[i].timesPlayed;
+                winpercentage = winperc.ToString("P0");
+            }
+
+            retString += $"{fighters[i].name},{fighters[i].timesPlayed},{fighters[i].timesWon},{fighters[i].timesLost},{winpercentage}|";
+        }
+        return retString;
+    }
+    public string GetWinPercentage(int id)
+    {
+        string[] percentages = ViewData["winpercentage"] as string[];
+            return percentages[id];
+
+    }
+}
+
+<div class="scoreboard">
+    <table cellspacing="0">
+        <tr>
+            <td>Fighter</td>
+            <td>times played</td>
+            <td>times won</td>
+            <td>times lost</td>
+            <td>win percentage</td>
+        </tr>
+@{ for (int i =0; i<40;i++)
+    {
+        if (i%2 ==0)
+        {
+        <tr id="@i" class="eo"></tr>
+        }
+        <tr id="@i"></tr>
+        
+    }
+
+}
+    </table>
+</div>
+
+<script>
+    var thelist = "@GetScoreBoard()"
+    var list = $(".scoreboard").text();
+    for (i=0;i<40;i++)
+    {
+        var string = thelist.split('|')[i];
+        var field = string.split(',');
+        $("#"+i).append("<td>" + field[0] + "</td>" +"<td>" + field[1] + "</td>" +"<td>" + field[2] + "</td>" +"<td>" + field[3] + "</td>" + "<td>" + field[4] +  "</td>");
+    }
+    
+
+</script>

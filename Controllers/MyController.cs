@@ -69,8 +69,6 @@ namespace FighterApp.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            ViewData["Message"] = "Your application description page.";
-            //await _repository.StartGame(1, 2);
             return View();
         }
         [HttpGet]
@@ -96,5 +94,30 @@ namespace FighterApp.Controllers
 
             return View();
         }
+        [HttpGet]
+        [Route("season/scoreboard")]
+        public async Task<List<Game>> SeasonScoreboard()
+        {
+            return await _repository.GetSeasonScoreboard();
+            // ViewData["ScoreBoard"] = await _repository.GetSeasonScoreboard()
+            // return View();
+        }
+        [HttpGet]
+        [Route("stats")]
+        public async Task<Fighter[]> GetStats()
+        {
+            return await _repository.GetStats();
+        }
+        [HttpGet]
+        [Route("getSTats")]
+        public async Task<IActionResult> Scoreboard()
+        {
+            ViewData["scoreboard"] = await _repository.GetStats();
+            ViewData["winpercentage"] = await _repository.GetWinPercentage();
+            return View();
+        }
+
+
+
     }
 }

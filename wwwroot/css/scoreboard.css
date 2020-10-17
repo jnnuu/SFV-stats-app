@@ -1,0 +1,21 @@
+html{
+    color: #4a9fc0;
+    background-color: #292929;
+}
+.scoreboard {
+    width: 100%;
+    height :100%;
+}
+table {
+    width:100%;
+    text-align: center;
+    height:100%;
+}
+td {
+    border: 1px #bebebe;
+}
+table .eo
+{
+    background-color: #242424;
+    border-color: #bebebe;
+}
