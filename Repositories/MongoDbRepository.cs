@@ -20,7 +20,7 @@ public class MongoDbRepository : IRepository
         MongoClient mongoClient = new MongoClient("mongodb://localhost:27017");
         var database = mongoClient.GetDatabase("StreetFighterStats");
         _gamesCollection = database.GetCollection<Game>("games");
-        _fighterCollection = database.GetCollection<Fighter>("debug_fighters");
+        _fighterCollection = database.GetCollection<Fighter>("fighters");
         _seasonCollection = database.GetCollection<Game>("seasongames");
         _bsonDocumentCollection = database.GetCollection<BsonDocument>("fighters");
     }
@@ -206,9 +206,12 @@ public class MongoDbRepository : IRepository
         Fighter[] fighters = new Fighter[40];
         var filter = Builders<Fighter>.Filter.Empty;
         List<Fighter> list = await _fighterCollection.Find(filter).ToListAsync();
-        for (int i = 0; i < fighters.Length; i++)
+        if (list.Count > 0)
         {
-            fighters[i] = list[i];
+            for (int i = 0; i < fighters.Length; i++)
+            {
+                fighters[i] = list[i];
+            }
         }
         return fighters;
     }

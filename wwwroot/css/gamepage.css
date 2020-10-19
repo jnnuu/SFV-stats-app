@@ -31,15 +31,17 @@ img{
 }
 .GeneralStats
 {
-    bottom:0;
+    display: flex;
+    justify-content: space-around;
 }
 .top3winrate
 {
     text-align: left;
-    height:60px;
+    height:100px;
 }
 .top3played
 {
-    text-align: right;
-    height: 60px;
+    text-align: left;
+    height: 100px;
+    right:0px;
 }

@@ -12,15 +12,17 @@ a{
 }
 img{
     left:0;
+    width:100px;
+    height:100px;
 }
 .InvisibleText
 {
-    color:(rgba(0,0,0,1));
+    color: rgba(0, 0,0, 0);
 }
 .LeftSide
 {
     display:flex;
-    width:194px;
+    width:50%;
     flex-wrap: wrap;
     justify-items: left;
     left:0;
@@ -41,9 +43,11 @@ img{
 }
 button{
     padding: 0px;
+    width:100%;
     margin: 0;
     display:block;
-    height:182px;
+    justify-items: center;
+    height:16%;
     background-color:#4e2edb;
     font-size:large;
     color:rgb(49, 43, 43);

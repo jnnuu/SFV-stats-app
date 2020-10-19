@@ -178,3 +178,5 @@ C:\Users\uusi-\raspi-repos\SFV-stats-app\obj\Debug\netcoreapp3.1\FighterApp.cspr
 C:\Users\uusi-\raspi-repos\SFV-stats-app\obj\Debug\netcoreapp3.1\staticwebassets\FighterApp.StaticWebAssets.Manifest.cache
 C:\Users\uusi-\raspi-repos\SFV-stats-app\obj\Debug\netcoreapp3.1\staticwebassets\FighterApp.StaticWebAssets.xml
 C:\Users\uusi-\raspi-repos\SFV-stats-app\obj\Debug\netcoreapp3.1\FighterApp.genruntimeconfig.cache
+C:\Users\Jonni\source\repos\SFV-stats-app-master\FighterApp\obj\Debug\netcoreapp3.1\Razor\Views\My\Scoreboard.cshtml.g.cs
+C:\Users\Jonni\source\repos\SFV-stats-app-master\FighterApp\obj\Debug\netcoreapp3.1\Razor\Views\My\SeasonScoreboard.cshtml.g.cs
