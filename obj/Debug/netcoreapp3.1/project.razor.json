@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\uusi-\\source\\repos\\SFV-stats-app\\FighterApp.csproj",
+  "FilePath": "c:\\Users\\uusi-\\raspi-repos\\SFV-stats-app\\FighterApp.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14392,28 +14392,28 @@
   "RootNamespace": "FighterApp",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\uusi-\\source\\repos\\SFV-stats-app\\Views\\My\\Index.cshtml",
-      "TargetPath": "Views\\My\\Index.cshtml",
+      "FilePath": "c:\\Users\\uusi-\\raspi-repos\\SFV-stats-app\\Views\\My\\SeasonScoreboard.cshtml",
+      "TargetPath": "Views\\My\\SeasonScoreboard.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\uusi-\\source\\repos\\SFV-stats-app\\Views\\My\\Scoreboard.cshtml",
-      "TargetPath": "Views\\My\\Scoreboard.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\uusi-\\source\\repos\\SFV-stats-app\\Views\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\Users\\uusi-\\raspi-repos\\SFV-stats-app\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\uusi-\\source\\repos\\SFV-stats-app\\Views\\My\\GamePage.cshtml",
+      "FilePath": "c:\\Users\\uusi-\\raspi-repos\\SFV-stats-app\\Views\\My\\Scoreboard.cshtml",
+      "TargetPath": "Views\\My\\Scoreboard.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\uusi-\\raspi-repos\\SFV-stats-app\\Views\\My\\GamePage.cshtml",
       "TargetPath": "Views\\My\\GamePage.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\uusi-\\source\\repos\\SFV-stats-app\\Views\\My\\SeasonScoreboard.cshtml",
-      "TargetPath": "Views\\My\\SeasonScoreboard.cshtml",
+      "FilePath": "c:\\Users\\uusi-\\raspi-repos\\SFV-stats-app\\Views\\My\\Index.cshtml",
+      "TargetPath": "Views\\My\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],

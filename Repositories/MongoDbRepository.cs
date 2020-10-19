@@ -20,7 +20,7 @@ public class MongoDbRepository : IRepository
         MongoClient mongoClient = new MongoClient("mongodb://localhost:27017");
         var database = mongoClient.GetDatabase("StreetFighterStats");
         _gamesCollection = database.GetCollection<Game>("games");
-        _fighterCollection = database.GetCollection<Fighter>("fighters");
+        _fighterCollection = database.GetCollection<Fighter>("debug_fighters");
         _seasonCollection = database.GetCollection<Game>("seasongames");
         _bsonDocumentCollection = database.GetCollection<BsonDocument>("fighters");
     }
@@ -140,9 +140,13 @@ public class MongoDbRepository : IRepository
         }
         List<Fighter> sortedFighters = allFighters.OrderByDescending(f => f.timesWon / f.timesPlayed).ToList();
         Fighter[] topThree = new Fighter[3];
-        topThree[0] = sortedFighters[0];
-        topThree[1] = sortedFighters[1];
-        topThree[2] = sortedFighters[2];
+        if (sortedFighters.Count > 0)
+        {
+
+            topThree[0] = sortedFighters[0];
+            topThree[1] = sortedFighters[1];
+            topThree[2] = sortedFighters[2];
+        }
         return topThree;
     }
     public async Task<Fighter[]> TopPlayed()

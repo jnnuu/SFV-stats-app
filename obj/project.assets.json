@@ -7538,11 +7538,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\uusi-\\source\\repos\\SFV-stats-app\\FighterApp.csproj",
+      "projectUniqueName": "C:\\Users\\uusi-\\raspi-repos\\SFV-stats-app\\FighterApp.csproj",
       "projectName": "FighterApp",
-      "projectPath": "C:\\Users\\uusi-\\source\\repos\\SFV-stats-app\\FighterApp.csproj",
+      "projectPath": "C:\\Users\\uusi-\\raspi-repos\\SFV-stats-app\\FighterApp.csproj",
       "packagesPath": "C:\\Users\\uusi-\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\uusi-\\source\\repos\\SFV-stats-app\\obj\\",
+      "outputPath": "C:\\Users\\uusi-\\raspi-repos\\SFV-stats-app\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -13,12 +13,11 @@ namespace FighterApp.Controllers
 
     public class MyController : Controller
     {
-        private readonly ILogger<WeatherForecastController> _logger;
+
         private readonly IRepository _repository;
 
-        public MyController(ILogger<WeatherForecastController> logger, IRepository repo)
+        public MyController(IRepository repo)
         {
-            _logger = logger;
             _repository = repo;
         }
 

@@ -39,6 +39,12 @@
         return i;
     }
 
+    public string GetCharacterName(int id)
+    {
+        string name = Enum.GetName(typeof(Fighter_id), id);
+        return name;
+    }
+
     public string TopThreePlayed()
     {
         Fighter[] fighters = ViewData["TopThreePlayed"] as Fighter[];
@@ -66,9 +72,11 @@
 
     public string GetWinPercentageP1()
     {
+        string name = (string)ViewData["PlayerOne"];
         int played = (int)ViewData["id1_played"];
         int won = (int)ViewData["id1_won"];
-        System.Console.WriteLine($"p1:w:{won}/p:{played}");
+        int lost = (int)ViewData["id2_lost"];
+        System.Console.WriteLine($"{name}   |p:{played}|  w:{won}     l:{lost}");
         if (won == 0 || played == 0)
         {
             return  "0 %" ;
@@ -81,9 +89,11 @@
 
      public string GetWinPercentageP2()
     {
+        string name = (string)ViewData["PlayerTwo"];
         int played = (int)ViewData["id2_played"];
         int won = (int)ViewData["id2_won"];
-        System.Console.WriteLine($"p2:w:{won}/p:{played}");
+        int lost = (int)ViewData["id2_lost"];
+        System.Console.WriteLine($"{name}   |p:{played}|  w:{won}     l:{lost}");
         if (won == 0 || played == 0)
         {
             return "0 %";
@@ -129,9 +139,11 @@
         console.log("Loser url: " + loseUrl);
         $.ajax(winUrl, {
             type: "POST",
-        });
-        $.ajax(loseUrl, {
-            type: "POST",
-        });
+        }).then(function() {
+            $.ajax(loseUrl, {
+                type: "POST",
+            });
+
+        })
     }
 </script>

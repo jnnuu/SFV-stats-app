@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RqoGj4lqozUkaQs+qmAoDIjFinP8evalT9oiz9QTNpYLXHSYioiyuEdhFOIrJnXzN4pzXcDKkea7zrI6gjpzDw==",
+  "dgSpecHash": "nbDHFHIRtGkulg3kFyeU3BbPvOPmI4Vo7JoIt9ub+9lOnRJ2v6gPa9gIgMV7+L1Jbtl4wloCJHD4ClkVtl9iPQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\uusi-\\source\\repos\\SFV-stats-app\\FighterApp.csproj",
+  "projectFilePath": "C:\\Users\\uusi-\\raspi-repos\\SFV-stats-app\\FighterApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\uusi-\\.nuget\\packages\\dnsclient\\1.3.1\\dnsclient.1.3.1.nupkg.sha512",
     "C:\\Users\\uusi-\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
