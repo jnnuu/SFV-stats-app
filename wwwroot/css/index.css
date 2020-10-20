@@ -9,15 +9,15 @@ html { -webkit-text-size-adjust: none; background-color: rgb(48, 48, 48); }
 }
 a{
     text-decoration: none;
+    height:auto;
 }
 img{
     left:0;
-    width:100px;
-    height:100px;
+    width:100%;
+    height:100%;
 }
 .InvisibleText
 {
-    color: rgba(0, 0,0, 0);
 }
 .LeftSide
 {
@@ -32,16 +32,18 @@ img{
 }
 .RightSide 
 {
-    padding-top: 25vh;
-    display:block;
+    display:flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    white-space: pre-wrap;
     text-align: center;
     right:0;
     width:50%;
-    height:50%;
+    height:100%;
     background-color:inherit;
 }
-button{
+
+/* button{
     padding: 0px;
     width:100%;
     margin: 0;
@@ -51,42 +53,51 @@ button{
     background-color:#4e2edb;
     font-size:large;
     color:rgb(49, 43, 43);
+} */
+.ProceedLink{
+    padding-top: 50vw;
 }
-button:active
-{
-    background-color: #82f491;
-    color: black;
+.PlayerButton{
+    color: rgba(0, 0,0, 0);
+    padding: 0px;
+    width:100%;
+    margin: 0;
+    display:flex;
+    align-content: space-between;
+    height:20%;
+    background-color:#695e99;
+    font-size:large;
+}
+
+.Logo{
+    width:100%;
+    height: auto;
 }
 .clicked
 {
     background-color:#000000;
 }
 .PostButton{
-    display:block;
-    padding:0;
-    margin:0;
-    text-orientation: upright;
-    writing-mode: vertical-rl;
-    text-align: center;
-    height:50%;
-    position: absolute;
-    right:0;
-    bottom:0;
-    margin-top: 100%;
-    width:47vw;
-    background-color:#ad2121;
-    font-size:55;
-    color:rgb(141, 128, 128);
+    display:flex;
+    width: 100%;
+    height:auto;
+    padding: 0;
+    border:0;
+    vertical-align: auto;
 }
 .p1{
-    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    height:25%;
+    position: static;
     font-size: xx-large;
     color:white;
-    outline: blue;
 }
 .p2{
-    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    height:25%;
+    position: static;
     font-size: xx-large;
     color:white;
-    outline:green;
 }

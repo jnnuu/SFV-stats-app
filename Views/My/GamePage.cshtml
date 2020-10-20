@@ -131,20 +131,20 @@
 <script type="text/javascript">
     function InputWinner(id1, id2)
     {
-        var winUrl = "http://192.168.100.19:5000/sfv/winner/";
-        var loseUrl = "http://192.168.100.19:5000/sfv/loser/";
+        var winUrl = "http://192.168.100.17:5000/sfv/winner/";
+        var loseUrl = "http://192.168.100.17:5000/sfv/loser/";
         winUrl += id1;
         loseUrl += id2;
         console.log("Winner url: " + winUrl);
         console.log("Loser url: " + loseUrl);
         $.ajax(winUrl, {
             type: "POST",
-        }).then(function() {
-            $.ajax(loseUrl, {
-                type: "POST",
-            });
-
         })
+        $.ajax(loseUrl, {
+            type: "POST",
+        });
+
+        
     }
     (function ()
     {

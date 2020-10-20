@@ -26,7 +26,7 @@
 <div class="LeftSide">
 @for (var i =0;i<40;i++)
 {
-    <button id="@Convert.ToInt32((Fighter_id)i)" class="InvisibleText" onClick="AddHeroToGame(this.id)"><img src="@getFighterAvatar(Enum.GetName(typeof(Fighter_id),i))">@Enum.GetName(typeof(Fighter_id),i)</button>
+    <button id="@Convert.ToInt32((Fighter_id)i)" class="PlayerButton" onClick="AddHeroToGame(this.id)"><img src="@getFighterAvatar(Enum.GetName(typeof(Fighter_id),i))">@Enum.GetName(typeof(Fighter_id),i)</button>
 
 
     @* <button id="@Convert.ToInt32((Fighter_id)i)" onClick="AddHeroToGame(this.id)">@Enum.GetName(typeof(Fighter_id),i)</button> *@
@@ -34,9 +34,14 @@
 </div>
     <div class="RightSide">
         <div class="p1"></div>
-    VS
+        <div class="Go">
+            <a class="ProceedLink" href="/sfV/Game/_1/_2">
+                <img class="Logo" src="img/SFV_LOGO.png">
+                <!--button class="PostButton" onClick="PostGame()">
+                </button-->
+            </a>
+        </div>
         <div class="p2"></div>
-        <a class="ProceedLink" href="/sfV/Game/_1/_2"><button class="PostButton" onClick="PostGame()">FIGHT</button></a>
     </div>
 </div>
 
